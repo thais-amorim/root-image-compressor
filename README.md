@@ -1,1 +1,0 @@
-# root-image-compressor

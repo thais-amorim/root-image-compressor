@@ -1,4 +1,6 @@
 from root.ui import MainWindow
+from root.compressor import LzwCompressor
+from root.util import ImageUtil as util
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
@@ -9,9 +11,13 @@ print(sys.path)
 
 
 def main():
-    app = QApplication([])
-    GUI = MainWindow()
-    app.exec_()
+    #    app = QApplication([])
+    #    GUI = MainWindow()
+    #    app.exec_()
+    img = util.read_image("images\\benchmark.bmp")
+    compressor = LzwCompressor(img)
+    compressed_img = compressor.compress()
+    util.save_image("images\\compressed.bmp")
 
 
 if __name__ == "__main__":

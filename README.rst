@@ -26,7 +26,7 @@ Features
 
 Implemented compression methods:
 
--
+- Lempel-Ziv-Welch (LZW)
 
 Contribute
 ----------

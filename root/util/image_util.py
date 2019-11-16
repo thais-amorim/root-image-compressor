@@ -2,8 +2,9 @@
 import imageio
 import numpy as np
 from PIL import Image
-_MIN_PIXEL = 0
-_MAX_PIXEL = 255
+
+_MIN_INTENSITY = 0
+_MAX_INTENSITY = 255
 
 
 class ImageUtil():
@@ -32,8 +33,8 @@ class ImageUtil():
         min_input = img.min()
         max_input = img.max()
 
-        min_output = _MIN_PIXEL
-        max_output = _MAX_PIXEL
+        min_output = _MIN_INTENSITY
+        max_output = _MAX_INTENSITY
         return (img - min_input) * ((max_output - min_output) / (max_input - min_input) + min_output)
 
     @staticmethod

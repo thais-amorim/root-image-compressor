@@ -9,7 +9,7 @@ import sys
 sys.path.insert(0, sys.path[0] + '\\..\\controller')
 print(sys.path)
 
-_FILE_TYPES = "bmp(*.bmp)"
+_FILE_TYPES = "bmp(*.bmp);;tiff(*.tiff)"
 
 
 class Window(QMainWindow):
@@ -72,7 +72,7 @@ class Window(QMainWindow):
 
 class Const():
     DEFAULT_IMAGE = "images/aranha.png"
-    WINDOW_TITLE = "Root Image Editor"
+    WINDOW_TITLE = "Root Image Compressor"
     ICONS_PATH = "assets/icons/"
     WIDTH = 800
     HEIGHT = 600

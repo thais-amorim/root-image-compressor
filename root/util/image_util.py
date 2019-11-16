@@ -8,13 +8,13 @@ _MAX_PIXEL = 255
 
 class ImageUtil():
     @staticmethod
-    def isGrayScale(img):
+    def is_gray_scale(img):
         if len(img.shape) == 2:
             return True
         return False
 
     @staticmethod
-    def isRgb(img):
+    def is_rgb(img):
         if len(img.shape) == 3:
             return True
         return False

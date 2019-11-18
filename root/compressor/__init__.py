@@ -1,1 +1,2 @@
-from .lzw_compressor import LzwCompressor
+from .lzw import Lzw
+from .huffman import Huffman

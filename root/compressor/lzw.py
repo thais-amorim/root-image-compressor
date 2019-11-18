@@ -5,7 +5,7 @@ import numpy as np
 _MAX_INTENSITY = 255
 
 
-class LzwCompressor():
+class Lzw():
 
     def __init__(self, image):
         self.image = image

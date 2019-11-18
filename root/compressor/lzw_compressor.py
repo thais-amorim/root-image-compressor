@@ -37,18 +37,24 @@ class LzwCompressor():
         for row in range(height):
             for column in range(width):
                 pixel = uncompressed[row][column]
-                wc = str(w) + str(pixel)
+
+                #current word + current image pixel
+                if w == "":
+                    wc = str(pixel)
+                else:
+                    wc = str(w) + "-" +str(pixel)
+                # breakpoint()
+
                 if wc in dictionary:
                     w = wc
                 else:
-                    w_value = dictionary.get(w, -1)
-                    result.append(w_value)
+                    obtained[row][column] = dictionary.get(w, -1)
                     # Add wc to the dictionary.
                     dictionary[wc] = dict_size
                     dict_size += 1
                     w = str(pixel)
 
-        if w:
-            result.append(dictionary[w])
+            if w:
+                obtained[row][column] = dictionary.get(w, -1)
 
         return obtained

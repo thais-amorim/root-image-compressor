@@ -14,8 +14,8 @@ def main():
     #    app = QApplication([])
     #    GUI = MainWindow()
     #    app.exec_()
-    compressor = Huffman("images/benchmark.bmp")
-    compressor.compress()
+    compressor = Huffman("images/benchmark.bmp.pdi")
+    compressor.decompress()
 
 
 if __name__ == "__main__":

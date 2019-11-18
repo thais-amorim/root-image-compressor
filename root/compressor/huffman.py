@@ -9,7 +9,8 @@ RIGHT = '0'
 class Huffman():
     def __init__(self, filename):
         self.filename = filename
-        self.outputname = filename + '.huffman'
+        self.compress_filename = filename + '.pdi'
+        self.decompress_filename = "images/output_huffman.bmp"
 
     def compress(self):
         all_bytes = self.read_bytes(self.filename)
@@ -37,7 +38,7 @@ class Huffman():
             header_bytes += leaf.data[1].to_bytes(
                 max_count_bytes, sys.byteorder)
 
-        self.write_bytes(self.outputname, header_bytes, output_bytes)
+        self.write_bytes(self.compress_filename, header_bytes, output_bytes)
         print('Final bytes amount: ', len(output_bytes) + len(header_bytes))
 
     def get_frequency_per_value(self, all_bytes):
@@ -60,6 +61,40 @@ class Huffman():
         with open(output_path, 'wb') as out_file:
             out_file.write(header_bytes)
             out_file.write(output_bytes)
+
+    def decompress(self):
+        input_bytes, byte_frequencies = self.read_compressed_file()
+        _, tree = build_tree(byte_frequencies)
+        input_bits = bin(int.from_bytes(input_bytes, sys.byteorder))[3:]
+        output_bytes = b''
+        current_node = tree
+        for bit in input_bits:
+            if bit == LEFT:
+                current_node = current_node.left
+            else:
+                current_node = current_node.right
+
+            if isinstance(current_node, Leaf):
+                output_bytes += current_node.data[0]
+                current_node = tree
+
+        with open(self.decompress_filename, 'wb') as output_file:
+            output_file.write(output_bytes)
+
+    def read_compressed_file(self):
+        byte_frequencies = []
+        input_bytes = None
+        with open(self.filename, 'rb') as input_file:
+            leaves_count = int.from_bytes(input_file.read(2), sys.byteorder)
+            max_count_bytes = int.from_bytes(input_file.read(8), sys.byteorder)
+            while leaves_count > 0:
+                b = input_file.read(1)
+                c = int.from_bytes(
+                    input_file.read(max_count_bytes), sys.byteorder)
+                byte_frequencies.append((b, c))
+                leaves_count -= 1
+            input_bytes = input_file.read()
+        return input_bytes, byte_frequencies
 
 
 class Leaf():

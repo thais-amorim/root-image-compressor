@@ -14,10 +14,10 @@ def main():
     #    app = QApplication([])
     #    GUI = MainWindow()
     #    app.exec_()
-    img = util.read_image("images\\benchmark.bmp")
+    img = util.read_image("images/benchmark.bmp")
     compressor = LzwCompressor(img)
     compressed_img = compressor.compress()
-    util.save_image("images\\compressed.bmp")
+    util.save_image("images/compressed.bmp",compressed_img)
 
 
 if __name__ == "__main__":

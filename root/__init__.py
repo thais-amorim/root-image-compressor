@@ -1,5 +1,4 @@
-from root.compressor import Strategy
-from root.util import ImageUtil as util
+from root.method import Strategy
 import argparse
 
 parser = argparse.ArgumentParser(description='Compresses or decompresses images.', epilog='Enjoy it! :)', formatter_class=argparse.ArgumentDefaultsHelpFormatter)

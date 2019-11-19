@@ -1,4 +1,4 @@
-from root.compressor import Huffman
+from root.method import Huffman
 
 class Strategy():
 

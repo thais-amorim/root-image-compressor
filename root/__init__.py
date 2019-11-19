@@ -1,4 +1,4 @@
-from root.compressor import Huffman
+from root.compressor import Strategy
 from root.util import ImageUtil as util
 import argparse
 
@@ -12,11 +12,9 @@ args = parser.parse_args()
 
 def main():
     if args.decompress:
-        decompressor = Huffman(args.filename[0])
-        decompressor.decompress()
+        Strategy.decompress(args.method, args.filename[0])
     elif args.compress:
-        compressor = Huffman(args.filename[0])
-        compressor.compress()
+        Strategy.compress(args.method, args.filename[0])
     else:
         print("Use -c to compress or -d to decompress")
 

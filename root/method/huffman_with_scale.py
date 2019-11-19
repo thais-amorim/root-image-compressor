@@ -2,6 +2,7 @@ import numpy as np
 from root.method import Huffman
 from root.util import ImageUtil as util
 
+
 class HuffmanWithScale():
     def __init__(self, filename):
         self.filename = filename
@@ -96,12 +97,14 @@ class HuffmanWithScale():
         return enlargedImg
 
     def compress(self):
+        initial_bytes_amount = self.__read_bytes_amount(self.filename)
         img = util.read_image(self.filename)
         img = self.apply_bilinear_interpolation(img, 0.8)
         scaled_filename = self.__format_scaled_filename(self.filename)
         util.save_image(scaled_filename, img)
         compressor = Huffman(scaled_filename)
         compressor.compress()
+        return compressor.compress_filename, initial_bytes_amount, compressor.final_bytes_amount
 
     def __format_scaled_filename(self, original):
         splitted = original.split('.')
@@ -114,6 +117,13 @@ class HuffmanWithScale():
         compressor.decompress()
         img = util.read_image(compressor.decompress_filename)
         img = self.apply_bilinear_interpolation(img, 1.2)
-        scaled_filename = compressor.decompress_filename.replace("small","big")
+        scaled_filename = compressor.decompress_filename.replace(
+            "small", "big")
         util.save_image(scaled_filename, img)
-        print("Scaled image to original size was saved at", scaled_filename)
+        return scaled_filename
+
+    def __read_bytes_amount(self, input_path):
+        all_bytes = []
+        with open(input_path, 'rb') as binaryfile:
+            all_bytes = binaryfile.read()
+        return len(all_bytes)

@@ -1,8 +1,5 @@
 imageio==2.5.0
-pytest==5.1.2
-codecov==2.0.15
-pytest-cov==2.8.1
 autopep8==1.4.4
 Pillow==6.2.1
 numpy==1.17.1
-PyQt5==5.13.0
+argparse==1.4.0

@@ -1,4 +1,5 @@
 from root.method import Huffman
+from root.method import HuffmanWithScale
 
 class Strategy():
 
@@ -10,6 +11,9 @@ class Strategy():
         if "huffman" == method:
             compressor = Huffman(filename)
             compressor.compress()
+        elif "huffman_with_scale" == method:
+            compressor = HuffmanWithScale(filename)
+            compressor.compress()
         else:
             print("We have not implemented the method " + str(method) + " for compression. Sorry :(")
 
@@ -20,6 +24,9 @@ class Strategy():
 
         if "huffman" == method:
             compressor = Huffman(filename)
+            compressor.decompress()
+        elif "huffman_with_scale" == method:
+            compressor = HuffmanWithScale(filename)
             compressor.decompress()
         else:
             print("We have not implemented the method " + str(method) + "for decompression. Sorry :(")

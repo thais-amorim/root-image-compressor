@@ -13,8 +13,9 @@ $ pip3 install -r requirements.txt
 
 Running
 -------
+$ python main.py -cm huffman_with_scale images\benchmark.bmp
 
-$ python3 main.py
+$ python main.py -dm huffman_with_scale images\benchmark.bmp
 
 Testing
 -------

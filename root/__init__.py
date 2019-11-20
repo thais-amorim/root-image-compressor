@@ -5,7 +5,7 @@ parser = argparse.ArgumentParser(description='Compresses or decompresses images.
 parser.add_argument('filename', nargs=1, metavar='file name',type=str ,help='The complete path to target image.')
 parser.add_argument('-d','--decompress', help='Decompress the image.', action='store_true')
 parser.add_argument('-c','--compress', help='Compress the image.', action='store_true')
-parser.add_argument('-m','--method', help='Set the used method', action='store_true', default='huffman')
+parser.add_argument('-m','--method', help='Set the used method', action='store', default='huffman')
 
 args = parser.parse_args()
 

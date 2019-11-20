@@ -13,20 +13,28 @@ $ pip3 install -r requirements.txt
 
 Running
 -------
+To apply Huffman:
 
-$ python3 main.py
+$ python main.py -cm huffman images\benchmark.bmp
 
-Testing
--------
+$ python main.py -dm huffman images\benchmark.bmp.pdi
 
-$ pytest test
+
+To apply Huffman + scale:
+
+$ python main.py -cm huffman_with_scale images\benchmark.bmp
+
+$ python main.py -dm huffman_with_scale images\benchmark_small.bmp.pdi
+
 
 Features
 --------
 
 Implemented compression methods:
 
--
+- Huffman
+- Run-length
+- Scale + Huffman
 
 Contribute
 ----------

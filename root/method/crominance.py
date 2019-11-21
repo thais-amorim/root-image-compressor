@@ -4,11 +4,11 @@ from matplotlib import pyplot as plt
 from matplotlib import colors as colors
 
 
-class PreProc():
+class Crominance():
 
     def __init__(self, filename):
         self.filename = filename
-        self.compress_filename = filename + '.rle'
+        self.compress_filename = filename + '.cro'
         self.decompress_filename = "images/output_huffman.bmp"
 
     def read_image(self, image_path):
@@ -76,7 +76,3 @@ class PreProc():
     def write_bytes(self, output_path, output_bytes):
         with open(output_path, 'wb') as out_file:
             out_file.write(output_bytes)
-
-
-p = PreProc("benchmark.bmp")
-image = p.crominance_hsv_mean()

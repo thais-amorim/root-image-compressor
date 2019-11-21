@@ -1,7 +1,4 @@
-import imageio
-import numpy as np
-from matplotlib import pyplot as plt
-from matplotlib import colors as colors
+from root.method import Method
 
 
 class PreProcessor():
@@ -10,12 +7,11 @@ class PreProcessor():
         self.filename = filename
         self.extension = filename.split('.')[-1]
 
-    def read_bytes(self, input_path):
-        all_bytes = []
-        with open(input_path, 'rb') as binaryfile:
-            all_bytes = binaryfile.read()
-        return all_bytes
+    def get_compression_method(self):
+        return None
 
-    def write_bytes(self, output_path, output_bytes):
-        with open(output_path, 'wb') as out_file:
-            out_file.write(output_bytes)
+    def get_decompression_method(self):
+        try:
+            return Method(self.extension).name
+        except:
+            print("We do not know how to decompress extension", self.extension)

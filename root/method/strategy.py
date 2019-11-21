@@ -10,12 +10,14 @@ class Strategy():
 
     @staticmethod
     def compress(method, filename, is_lossy):
-        processor = PreProcessor(filename)
-        recommended = processor.get_compression_method(is_lossy) # is_lossy is a boolean (True or False)
-        if recommended is None:
-            method = method.strip().lower()
-        else:
+ 
+        if method == "None":
+            processor = PreProcessor(filename)
+            recommended = processor.get_compression_method(is_lossy) # is_lossy is a boolean (True or False)
             method = recommended
+        else:
+            method = method.strip().lower()
+            
         print("Compressing", filename, "using", method, "technique\n")
 
         saved_path = "nowhere"

@@ -17,14 +17,14 @@ To apply Huffman:
 
 $ python main.py -cm huffman images\benchmark.bmp
 
-$ python main.py -dm huffman images\benchmark.bmp.pdi
+$ python main.py -dm huffman images\benchmark.bmp.huf
 
 
 To apply Huffman + scale:
 
 $ python main.py -cm huffman_with_scale images\benchmark.bmp
 
-$ python main.py -dm huffman_with_scale images\benchmark_small.bmp.pdi
+$ python main.py -dm huffman_with_scale images\benchmark_small.bmp.shuf
 
 
 Features

@@ -9,9 +9,9 @@ METHODS = ["huffman", "huffman_with_scale", "runlength"]
 class Strategy():
 
     @staticmethod
-    def compress(method, filename):
+    def compress(method, filename, is_lossy):
         processor = PreProcessor(filename)
-        recommended = processor.get_compression_method()
+        recommended = processor.get_compression_method(is_lossy) # is_lossy is a boolean (True or False)
         if recommended is None:
             method = method.strip().lower()
         else:

@@ -7,7 +7,7 @@ class PreProcessor():
         self.filename = filename
         self.extension = filename.split('.')[-1]
 
-    def get_compression_method(self):
+    def get_compression_method(self, is_lossy):
         return None
 
     def get_decompression_method(self):

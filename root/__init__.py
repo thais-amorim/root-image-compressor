@@ -21,7 +21,7 @@ def main():
     if args.decompress:
         Strategy.decompress(args.method, args.filename[0])
     elif args.compress:
-        Strategy.compress(args.method, args.filename[0])
+        Strategy.compress(args.method, args.filename[0], args.lossy)
     else:
         print("Use -c to compress or -d to decompress")
 

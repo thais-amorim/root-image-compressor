@@ -97,12 +97,14 @@ class HuffmanWithScale():
         return enlargedImg
 
     def compress(self):
+        COMPRESSED_EXTENSION = 'shuf'
+
         initial_bytes_amount = self.__read_bytes_amount(self.filename)
         img = util.read_image(self.filename)
         img = self.apply_bilinear_interpolation(img, 0.8)
         scaled_filename = self.__format_scaled_filename(self.filename)
         util.save_image(scaled_filename, img)
-        compressor = Huffman(scaled_filename)
+        compressor = Huffman(scaled_filename, COMPRESSED_EXTENSION)
         compressor.compress()
         return compressor.compress_filename, initial_bytes_amount, compressor.final_bytes_amount
 

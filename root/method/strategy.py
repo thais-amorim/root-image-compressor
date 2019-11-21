@@ -1,6 +1,7 @@
 from root.method import Huffman
 from root.method import HuffmanWithScale
 from root.method import RunLength
+from root.method import PreProcessor
 
 METHODS = ["huffman", "huffman_with_scale", "runlength"]
 
@@ -9,7 +10,13 @@ class Strategy():
 
     @staticmethod
     def compress(method, filename):
-        method = method.strip().lower()
+        processor = PreProcessor(filename)
+        recommended = processor.get_compression_method()
+        if recommended is None:
+            method = method.strip().lower()
+        else:
+            method = recommended
+        print("Compressing", filename, "using", method, "technique\n")
 
         saved_path = "nowhere"
         initial = 0
@@ -36,7 +43,13 @@ class Strategy():
 
     @staticmethod
     def decompress(method, filename):
-        method = method.strip().lower()
+        processor = PreProcessor(filename)
+        recommended = processor.get_decompression_method()
+        if recommended is None:
+            method = method.strip().lower()
+        else:
+            method = recommended
+
         print("Decompressing", filename, "using", method, "technique")
 
         saved_path = "nowhere"

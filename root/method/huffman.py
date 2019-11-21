@@ -4,18 +4,17 @@ from math import ceil
 
 LEFT = '1'
 RIGHT = '0'
-COMPRESSED_EXTENSION = '.pdi'
+COMPRESSED_EXTENSION = 'huf'
 
 
 class Huffman():
-    def __init__(self, filename):
+    def __init__(self, filename, extension=COMPRESSED_EXTENSION):
         self.filename = filename
-        self.compress_filename = filename + COMPRESSED_EXTENSION
+        self.compress_filename = filename + '.' + extension
         self.decompress_filename = self.__format_decompress_filename(filename)
 
     def __format_decompress_filename(self, original):
-        obtained = original.replace(COMPRESSED_EXTENSION, '')
-        splitted = obtained.split('.')
+        splitted = original.split('.')[:-1]
         splitted[0] += "_out"
 
         return '.'.join(splitted)

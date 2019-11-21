@@ -10,7 +10,8 @@ class Strategy():
     @staticmethod
     def compress(method, filename):
         method = method.strip().lower()
-
+        print("Compressing", filename, "using", method, "technique\n")
+        
         saved_path = "nowhere"
         initial = 0
         final = 0

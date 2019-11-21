@@ -1,3 +1,4 @@
+from .method import Method
 from .huffman import Huffman
 from .huffman_with_scale import HuffmanWithScale
 from .runlength import RunLength

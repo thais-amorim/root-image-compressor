@@ -116,7 +116,7 @@ class HuffmanWithScale():
         compressor = Huffman(self.filename)
         compressor.decompress()
         img = util.read_image(compressor.decompress_filename)
-        img = self.apply_bilinear_interpolation(img, 1.2)
+        img = self.apply_bilinear_interpolation(img, 1.25)
         scaled_filename = compressor.decompress_filename.replace(
             "small", "big")
         util.save_image(scaled_filename, img)

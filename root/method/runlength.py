@@ -3,7 +3,13 @@ class RunLength():
     def __init__(self, filename):
         self.filename = filename
         self.compress_filename = filename + '.rle'
-        self.decompress_filename = "images/output_huffman.bmp"
+        self.decompress_filename = self.__format_decompress_filename(filename)
+
+    def __format_decompress_filename(self, original):
+        splitted = original.split('.')[:-1]
+        splitted[0] += "_out"
+
+        return '.'.join(splitted)
 
     def analiseImage(self, tolerance):
         all_bytes = self.read_bytes(self.filename)

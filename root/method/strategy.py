@@ -2,8 +2,9 @@ from root.method import Huffman
 from root.method import HuffmanWithScale
 from root.method import RunLength
 from root.method import PreProcessor
+from root.method import RLEPlusHuff
 
-METHODS = ["huffman", "huffman_with_scale", "runlength"]
+METHODS = ["huffman", "huffman_with_scale", "runlength","rle_plus_huff"]
 
 
 class Strategy():
@@ -36,6 +37,9 @@ class Strategy():
         elif "runlength" == method:
             compressor = RunLength(filename)
             saved_path, initial, final = compressor.compress()
+        elif "rle_plus_huff" == method:
+            compressor = RLEPlusHuff(filename)
+            saved_path, initial, final = compressor.compress()
 
         print("Initial size:", format(initial, ","), "bytes")
         print("Final size:", format(final, ","), "bytes")
@@ -67,6 +71,9 @@ class Strategy():
             saved_path = compressor.decompress()
         elif "runlength" == method:
             compressor = RunLength(filename)
+            saved_path = compressor.decompress()
+        elif "rle_plus_huff" == method:
+            compressor = RLEPlusHuff(filename)
             saved_path = compressor.decompress()
 
         print("Image was saved at", saved_path)

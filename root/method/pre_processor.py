@@ -10,8 +10,8 @@ class PreProcessor():
     def get_compression_method(self, is_lossy):
         compressor = RunLength(self.filename)
         if(compressor.analiseImage(0.1)):
-            print("The image is good to be compacted with RunLenght")
-            return 'runlength'
+            print("The image is good to be compacted with RunLenght and Huffman")
+            return 'rle_plus_huff'
         elif is_lossy:
             print("The image is good to be compacted with Huffman")
             return 'huffman_with_scale'

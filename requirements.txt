@@ -1,5 +1,5 @@
 imageio==2.5.0
 autopep8==1.4.4
 Pillow==9.0.1
-numpy==1.17.1
+numpy==1.22.0
 argparse==1.4.0
